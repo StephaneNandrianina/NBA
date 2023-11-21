@@ -124,11 +124,12 @@
                                                 const playerListsContainer = document.getElementById("playerLists");
                                                 
                                                 playerLists.forEach((player) => {
-                                                    // const ligne =  document.createElement("tr");
-                                                    const listItem = document.createElement("td");
-                                                    // ligne.Content = listItem;
-                                                    listItem.textContent = `Nom: ${player.get("nom")}`;
-                                                    playerListsContainer.appendChild(listItem);
+                                                     const row =  document.createElement("tr");
+                                                     
+                                                    const Classementcell = document.createElement("td");
+
+                                                    Classementcell.textContent = `Nom: ${player.get("nom")}`;
+                                                    row.appendChild(listItem);
                                                 });
                                             }
                                         
