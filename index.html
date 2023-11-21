@@ -30,6 +30,22 @@
 
 </head>
 <body>
+    <ul id="playerLists"></ul>
+    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    
+<script>
+    Parse.initialize("4Z6iE8dkU7pNaf2IMGolpsL9GQ3DeVzgCEWD8C1M", "zgnvfJieN50W5HgzvFGINmJST6ZlfsdSWTowH335");
+    Parse.serverURL = "https://parseapi.back4app.com/";
+
+    async function SelectJoueur() {
+        try {
+            const response = await Parse.Cloud.run("select");
+            displayPlayerLists(response);
+        } catch (error) {
+            console.error("Erreur lors de la récupération des listes de joueurs :", error.message);
+        }
+    }
+</script>
 
 <div class="wrapper">
 	<div class="sidebar" data-background-color="white" data-active-color="danger">
@@ -100,53 +116,21 @@
 
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td><a href="stats.html">Dakota Rice</a></td>
-                                        	<td>I</td>
-                                        	<td>13</td>
-                                        	<td>13</td>
-                                            <td>31,9</td>
-                                            <td>11,2</td>
-                                            <td>6,2</td>
-                                            <td>34,1</td>
-                                            <td>36,4</td>
-                                            <td>50,2</td>
-                                            <td>31,8</td>
-                                            <td>88,5</td>
-                                        </tr>
                                         
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td><a href="stats.html">Kevin Durrent</a></td>
-                                        	<td>I</td>
-                                        	<td>13</td>
-                                        	<td>13</td>
-                                            <td>31,9</td>
-                                            <td>11,2</td>
-                                            <td>6,2</td>
-                                            <td>34,1</td>
-                                            <td>36,4</td>
-                                            <td>50,2</td>
-                                            <td>31,8</td>
-                                            <td>88,5</td>
-                                        </tr>
+                                        <script>
+                                            function displayPlayerLists(playerLists) {
+                                                const playerListsContainer = document.getElementById("playerLists");
                                         
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td><a href="stats.html">Stephen</a></td>
-                                        	<td>I</td>
-                                        	<td>13</td>
-                                        	<td>13</td>
-                                            <td>31,9</td>
-                                            <td>11,2</td>
-                                            <td>6,2</td>
-                                            <td>34,1</td>
-                                            <td>36,4</td>
-                                            <td>50,2</td>
-                                            <td>31,8</td>
-                                            <td>88,5</td>
-                                        </tr>
+                                                playerLists.forEach((player) => {
+                                                    const listItem = document.createElement("li");
+                                                    listItem.textContent = `ID: ${player.objectId}, Nom: ${player.get("nom")}`;
+                                                    playerListsContainer.appendChild(listItem);
+                                                });
+                                            }
+                                        
+                                            // Appel de la fonction au chargement de la page
+                                            SelectJoueur();
+                                        </script>
                                         
                                     </tbody>
                                 </table>
@@ -154,9 +138,6 @@
                             </div>
                         </div>
                     </div>
-
-
-                    
 
 
                 </div>
@@ -223,35 +204,8 @@
 
 <h1>Listes de Joueurs</h1>
 
-<ul id="playerLists"></ul>
 
-<script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
-<script>
-    Parse.initialize("4Z6iE8dkU7pNaf2IMGolpsL9GQ3DeVzgCEWD8C1M", "zgnvfJieN50W5HgzvFGINmJST6ZlfsdSWTowH335");
-    Parse.serverURL = "https://parseapi.back4app.com/";
 
-    async function SelectJoueur() {
-        try {
-            const response = await Parse.Cloud.run("select");
-            displayPlayerLists(response);
-        } catch (error) {
-            console.error("Erreur lors de la récupération des listes de joueurs :", error.message);
-        }
-    }
-
-    function displayPlayerLists(playerLists) {
-        const playerListsContainer = document.getElementById("playerLists");
-
-        playerLists.forEach((player) => {
-            const listItem = document.createElement("li");
-            listItem.textContent = `ID: ${player.objectId}, Nom: ${player.get("nom")}`;
-            playerListsContainer.appendChild(listItem);
-        });
-    }
-
-    // Appel de la fonction au chargement de la page
-    SelectJoueur();
-</script>
 
 </body>
 </html>
