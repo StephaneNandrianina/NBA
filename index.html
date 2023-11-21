@@ -30,7 +30,8 @@
 
 </head>
 <body>
-    <ul id="playerLists"></ul>
+    <ul id="playerLists">
+    </ul>
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
     
 <script>
@@ -120,10 +121,12 @@
                                         <script>
                                             function displayPlayerLists(playerLists) {
                                                 const playerListsContainer = document.getElementById("playerLists");
-                                        
+                                                
                                                 playerLists.forEach((player) => {
-                                                    const listItem = document.createElement("li");
-                                                    listItem.textContent = `ID: ${player.objectId}, Nom: ${player.get("nom")}`;
+                                                    const ligne =  document.createElement("tr");
+                                                    const listItem = document.createElement("td");
+                                                    ligne.Content = listItem;
+                                                    listItem.textContent = `Nom: ${player.get("nom")}`;
                                                     playerListsContainer.appendChild(listItem);
                                                 });
                                             }
