@@ -16,9 +16,9 @@
     Parse.initialize("4Z6iE8dkU7pNaf2IMGolpsL9GQ3DeVzgCEWD8C1M", "zgnvfJieN50W5HgzvFGINmJST6ZlfsdSWTowH335");
     Parse.serverURL = "https://parseapi.back4app.com/";
 
-    async function getAllPlayerLists() {
+    async function SelectJoueur() {
         try {
-            const response = await Parse.Cloud.run("getAllPlayerLists");
+            const response = await Parse.Cloud.run("select");
             displayPlayerLists(response);
         } catch (error) {
             console.error("Erreur lors de la récupération des listes de joueurs :", error.message);
@@ -30,13 +30,13 @@
 
         playerLists.forEach((player) => {
             const listItem = document.createElement("li");
-            listItem.textContent = `ID: ${player.objectId}, Nom: ${player.get("nomJoeur")}, Photo: ${player.get("photo")}, ID Équipe: ${player.get("idEquipe")}`;
+            listItem.textContent = `ID: ${player.objectId}, Nom: ${player.get("nom")}`;
             playerListsContainer.appendChild(listItem);
         });
     }
 
     // Appel de la fonction au chargement de la page
-    getAllPlayerLists();
+    SelectJoueur();
 </script>
 
 </body>
