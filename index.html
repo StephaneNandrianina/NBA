@@ -118,18 +118,20 @@
                                     </thead>
                                     <tbody>
 
-                                        <td id="playerLists">></td>                                        
+                                        <td id="playerLists"></td>                                        
                                         <script>
                                             function displayPlayerLists(playerLists) {
                                                 const playerListsContainer = document.getElementById("playerLists");
                                                 
                                                 playerLists.forEach((player) => {
-                                                     const ligne =  document.createElement("tr");
-                                                     
+                                                     const ligne =  document.createElement("tr");  
                                                     const listItem = document.createElement("td");
-
                                                     listItem.textContent = `Nom: ${player.get("nom")}`;
                                                     playerListsContainer.appendChild(listItem);
+
+                                                    const equipe = document.createElement("td");
+                                                    equipe.textContent = `Player: ${player.get("equipe")}`;
+                                                    playerListsContainer.appendChild(equipe);
                                                 });
                                             }
                                         
