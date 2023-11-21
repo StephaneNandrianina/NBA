@@ -123,9 +123,9 @@
                                                 const playerListsContainer = document.getElementById("playerLists");
                                                 
                                                 playerLists.forEach((player) => {
-                                                    const ligne =  document.createElement("tr");
+                                                    // const ligne =  document.createElement("tr");
                                                     const listItem = document.createElement("td");
-                                                    ligne.Content = listItem;
+                                                    // ligne.Content = listItem;
                                                     listItem.textContent = `Nom: ${player.get("nom")}`;
                                                     playerListsContainer.appendChild(listItem);
                                                 });
